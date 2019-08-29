@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -12,16 +13,15 @@
 </head>
 <body>
 
-${poet}
-<br>
-<br>找到了!
-<br>什么?
-<br>永恒
-<br>那是太阳与月的交相辉映
-<br>我永恒的灵魂	
-<br>注视着你的心		
-<br>纵然黑夜孤寂		
-<br>白昼如焚
-
+<form action="index" method="post">
+<input name="name">
+<input type="submit" value="开始战斗!">
+</form>
+<table>
+<tr><td>编号</td><td>名称</td><td>状态</td></tr>
+<c:forEach items="${typelist}" var="row" varStatus="v">
+<tr><td>${row.id}</td><td>${row.name}</td><td>${row.status}</td></tr>
+</c:forEach>
+</table>
 </body>
 </html>
