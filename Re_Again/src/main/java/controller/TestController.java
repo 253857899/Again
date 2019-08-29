@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 
-public class Test1 {
+public class TestController {
 		@RequestMapping("index")
 		public String index(@RequestParam(name="poet") String name,ModelMap m) {
 			m.put("poet", name);
