@@ -10,7 +10,7 @@
 <body>
 <c:if test="${param.id==null}">
 <form action="insert" method="post">
-<input name="name">
+<input name="name" value="${shoot.name}">
 <input name="status">
 <input type="submit" value="新增确定!">
 </form>
@@ -18,7 +18,7 @@
 <c:if test="${param.id!=null}">
 <form action="update" method="post">
 <input type="hidden" name="id" value="${id}">
-<input name="name">
+<input name="name" value="${shoot.name}">
 <input name="status">
 <input type="submit" value="修改确定!">
 </form>

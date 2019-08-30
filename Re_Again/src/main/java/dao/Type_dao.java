@@ -21,4 +21,6 @@ public interface Type_dao {
 	public void insert(Type t);
 	@Update("update type set name=#{name},status=#{status} where id=#{id}")
 	public void update(Type t);
+	@Select("select * from type where id = #{id}")
+	public Type selectById(int id);
 }

@@ -13,6 +13,14 @@
 </head>
 <body>
 
+<script type="text/javascript">
+function del(id){
+	if(confirm("删除????"))
+	open("delete?id="+id,"_self");
+}
+</script>
+
+
 <a href="add" > 新增 </a>
 
 <form action="index" method="post">
@@ -25,7 +33,7 @@
 <c:forEach items="${typelist}" var="row" varStatus="v">
 <tr><td>${row.id}</td><td>${row.name}</td><td>${row.status}</td>
 <td><a href="add?id=${row.id}">修改</a></td>
-<td><a href="delete?id=${row.id}">删除</a></td></tr>
+<td><a href="javascript:del(${row.id})">删除</a></td></tr>
 </c:forEach>
 </table>
 </body>

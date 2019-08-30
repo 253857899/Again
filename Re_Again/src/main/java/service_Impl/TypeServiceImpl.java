@@ -28,4 +28,7 @@ public class TypeServiceImpl implements TypeService{
 	public void update(Type t) {
 		dao.update(t);
 	}
+	public Type selectById(int id) {
+		return dao.selectById(id);
+	}
 }
