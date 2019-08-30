@@ -4,6 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="dao.Type_dao">    <!-- xml与接口dao关联 -->
  <select id="select" resultType="entry.Type" parameterType="java.lang.String">
- select * from type ${_parameter}
+ select * from type ${name}
  </select>
  </mapper>
