@@ -12,6 +12,7 @@ public class TestController {
 		public String index(@RequestParam(name="poet") String name,ModelMap m) {
 			m.put("poet", name);
 			System.out.println("¿ØÖÆÆ÷Æô¶¯!!!!!!!!!!!!!!!!!!!");
+			System.out.println("OK!!!!!!!!!");
 			return "index";
 		}
 }
