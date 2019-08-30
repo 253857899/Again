@@ -3,13 +3,13 @@ package service_Impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import dao.Type_dao;
 import entry.Type;
 import service.TypeService;
 
-@Component
+@Service
 public class TypeServiceImpl implements TypeService{
 	@Autowired
 	Type_dao dao;
