@@ -13,14 +13,19 @@
 </head>
 <body>
 
+<a href="add" > 新增 </a>
+
 <form action="index" method="post">
 <input name="name">
 <input type="submit" value="开始战斗!">
 </form>
+
 <table>
-<tr><td>编号</td><td>名称</td><td>状态</td></tr>
+<tr><td>编号</td><td>名称</td><td>状态</td><td>修改</td><td>删除</td></tr>
 <c:forEach items="${typelist}" var="row" varStatus="v">
-<tr><td>${row.id}</td><td>${row.name}</td><td>${row.status}</td></tr>
+<tr><td>${row.id}</td><td>${row.name}</td><td>${row.status}</td>
+<td><a href="add?id=${row.id}">修改</a></td>
+<td><a href="delete?id=${row.id}">删除</a></td></tr>
 </c:forEach>
 </table>
 </body>
