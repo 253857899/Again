@@ -4,9 +4,17 @@ public class Type {
 	private int id;
 	private String name;
 	private int status;
+	private int bookid;
 	public static String[] status_name = {"借出","归还"};
 	private String bookname;
 	
+	public int getBookid() {
+		return bookid;
+	}
+
+	public void setBookid(int bookid) {
+		this.bookid = bookid;
+	}
 	
 	public String getBookname() {
 		return bookname;

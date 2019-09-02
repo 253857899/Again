@@ -14,13 +14,13 @@ import entry.Type;
 
 @Repository
 public interface Type_dao {
-	@Select("SELECT type.*,book.name bookname FROM type LEFT JOIN book on type.id = book.id ${where}" )
+	@Select("SELECT type.*,book.name bookname FROM book INNER JOIN type on type.bookid = book.typeid ${where}" )
 	public List<Type> select(@Param(value = "where" ) String where);
 	@Delete("delete from type where id = #{id} ")
 	public void delete(int id);
-	@Insert("insert into type(name,status) value(#{name},#{status})")
+	@Insert("insert into type(name,status,bookid) value(#{name},#{status},#{bookid})")
 	public void insert(Type t);
-	@Update("update type set name=#{name},status=#{status} where id=#{id}")
+	@Update("update type set name=#{name},status=#{status},bookid=#{bookid} where id=#{id}")
 	public void update(Type t);
 	@Select("select * from type where id = #{id}")
 	public Type selectById(int id);
