@@ -23,8 +23,7 @@
     <mvc:annotation-driven/> 
     <!-- 处理静态资源 -->
     <mvc:default-servlet-handler/>
-   
-    
+
     <!-- 处理器映射器 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
     <!-- 处理器适配器 -->
@@ -40,7 +39,7 @@
     
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/"  /><!--控制器视图路径，如果放在/WEB-INF/里，则只能通过控制器访问，防止外面直接调用  -->
+        <property name="prefix" value="/"  /><!--控制器视图路径，如果放在/WEB-INF/里，则只能通过控制器访问，防止外面直接调用  -->
         <property name="suffix" value=".jsp"/>
     </bean>
     

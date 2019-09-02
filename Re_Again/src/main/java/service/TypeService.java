@@ -2,13 +2,18 @@ package service;
 
 import java.util.List;
 
-import entry.Book;
 import entry.Type;
+import utils.ReturnInfo;
 
 public interface TypeService {
-	public List<Type> select(String where);
-	public void delete(int id);
-	public void insert(Type t);
-	public void update(Type t);
-	public Type selectById(int id);
+public ReturnInfo select(String where,Integer page,Integer max);
+	
+	public Type selectByid(int id);
+	
+	public int insert(Type b);
+	
+	public int update(Type b);
+	
+	public int delete(Type b);
+	
 }

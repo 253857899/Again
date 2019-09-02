@@ -1,34 +1,41 @@
 package service_Impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.Type_dao;
-import entry.Book;
 import entry.Type;
 import service.TypeService;
+import utils.ReturnInfo;
 
 @Service
 public class TypeServiceImpl implements TypeService{
 	@Autowired
 	Type_dao dao;
-	public List<Type> select(String where) {
-			if(where==""||where==null)
-				return dao.select("");
-		else 
-			return dao.select(" where name like '%"+where+"%'");
+	public ReturnInfo select(String where, Integer page, Integer max) {
+		boolean canpage = page != null;
+		ReturnInfo info = new ReturnInfo();
+		info.setList(dao.select(where, ReturnInfo.getLimit(page, max)));
+		if (canpage)
+			info.setCount(dao.search(where));
+		return info;
 	}
-	public void delete(int id) {
-		dao.delete(id);
+
+	public Type selectByid(int id) {
+		return dao.select("where type.id=" + id, "limit 1").get(0);
 	}
-	public void insert(Type t) {
-		 dao.insert(t);
+
+	public int insert(Type b) {
+		return dao.insert(b);
 	}
-	public void update(Type t) {
-		dao.update(t);
+
+	public int update(Type b) {
+		return dao.update(b);
 	}
-	public Type selectById(int id) {
-		return dao.selectById(id);
+
+	public int delete(Type b) {
+		return dao.delete(b);
 	}
 }
