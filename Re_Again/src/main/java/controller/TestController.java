@@ -35,7 +35,9 @@ public class TestController {
 		}
 		@RequestMapping("add")
 		public String add(Integer id,ModelMap m) {
+			if(id!=null)
 			m.put("shoot", service.selectById(id));
+			m.put("statuses", Type.status_name);
 			m.put("id",id);
 			return "edit";
 		}

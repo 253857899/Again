@@ -9,11 +9,12 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import entry.Book;
 import entry.Type;
 
 @Repository
 public interface Type_dao {
-	@Select("select * from type ${where}")
+	@Select("SELECT type.*,book.name bookname FROM type LEFT JOIN book on type.id = book.id ${where}" )
 	public List<Type> select(@Param(value = "where" ) String where);
 	@Delete("delete from type where id = #{id} ")
 	public void delete(int id);

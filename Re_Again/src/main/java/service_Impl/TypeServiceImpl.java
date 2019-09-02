@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.Type_dao;
+import entry.Book;
 import entry.Type;
 import service.TypeService;
 
@@ -12,7 +13,6 @@ import service.TypeService;
 public class TypeServiceImpl implements TypeService{
 	@Autowired
 	Type_dao dao;
-
 	public List<Type> select(String where) {
 			if(where==""||where==null)
 				return dao.select("");
