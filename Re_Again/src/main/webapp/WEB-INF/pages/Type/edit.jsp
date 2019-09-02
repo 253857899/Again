@@ -33,6 +33,11 @@
 <option value="${v.index+1}" <c:if test="${shoot.status == v.index+1}">selected="selected"</c:if> >${row}</option>
 </c:forEach>
 </select>
+<select name = "bookid" >
+<c:forEach items="${booklist}" var="row" varStatus="v">
+<option value="${v.index+1}" <c:if test="${shoot.bookid == v.index+1}">selected="selected"</c:if>>${row.name}</option>
+</c:forEach>
+</select>
 <input type="submit" value="修改确定!">
 </form>
 </c:if>

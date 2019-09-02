@@ -28,7 +28,7 @@ function del(id){
 <input type="submit" value="开始战斗!">
 </form>
 <table>
-<tr><td>编号</td><td>名称</td><td>状态</td><td>书名(外键)</td><td>修改</td><td>删除</td></tr>
+<tr><td>编号</td><td>名称</td><td>状态</td><td>书名</td><td>修改</td><td>删除</td></tr>
 <c:forEach items="${typelist}" var="row" varStatus="v">
 <tr><td>${row.id}</td><td>${row.name}</td>
 <td>${row.status_name}</td>
