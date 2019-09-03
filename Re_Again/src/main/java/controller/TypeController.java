@@ -1,5 +1,6 @@
 package controller;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +22,7 @@ public class TypeController {
 			m.put("typelist", service.select(name));
 			return "Type/index";		
 		}
+		@RequiresPermissions("delete")
 		@RequestMapping("delete")
 		public String delete(int id, ModelMap m) {
 			service.delete(id);
