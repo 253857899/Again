@@ -1,29 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title></title>
 </head>
-<style>
-.left{
-	width: 15%;  height: 500px; 
-}
-.right{
-	width: 85%;  height: 500px;
-}
-</style>
 <body>
 <a href="User/outlogin">注销</a>
+<style>
+.left{
+	width:15%;height: 500px;
+}
+.right{
+width:85%;height: 500px;position: absolute;left: 15%;top:0;
+}
+</style>
+<script type="text/javascript">
+function ok(o){
+	if(o.contentWindow.location.href.indexOf("login")>0){
+		open("login.html","_self");
+	}
+	
+}
 
+</script>
 <div class="left">
-<a href="Book/index" target="right">book</a><br>
+<a href="Book/index" target="right">book</a></br>
 <a href="Type/index" target="right">type</a>
 </div>
 
+
 <div class="right">
-<iframe name="right"  ></iframe>
+<iframe name="right" width="300" height="300" src="Book/index" onload="ok(this);"></iframe>
 </div>
 </body>
 </html>
