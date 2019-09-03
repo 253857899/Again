@@ -6,8 +6,6 @@
 <meta charset="UTF-8">
 <title></title>
 </head>
-<body>
-<a href="User/outlogin">注销</a>
 <style>
 .left{
 	width:15%;height: 500px;
@@ -16,6 +14,8 @@
 width:85%;height: 500px;position: absolute;left: 15%;top:0;
 }
 </style>
+<body>
+<a href="User/outlogin">注销</a>
 <script type="text/javascript">
 function ok(o){
 	if(o.contentWindow.location.href.indexOf("login")>0){
@@ -26,7 +26,7 @@ function ok(o){
 
 </script>
 <div class="left">
-<a href="Book/index" target="right">book</a></br>
+<a href="Book/index" target="right">book</a><br>
 <a href="Type/index" target="right">type</a>
 </div>
 

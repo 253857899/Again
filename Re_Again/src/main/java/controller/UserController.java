@@ -3,6 +3,8 @@ package controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,11 +28,13 @@ public class UserController {
 			if(!num.equalsIgnoreCase(code)) {
 				return "redirect:/login.html";
 			}
+			
+			//SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(),u.getPass()));
 			User user=service.login(u);
 			if(user!=null) {
 				s.setMaxInactiveInterval(10);
 				s.setAttribute("user", user);
-				return "redirect:/index.jsp";
+				return "redirect:/Type/index.jsp";
 			}else {
 				return "redirect:/login.html";
 			}
