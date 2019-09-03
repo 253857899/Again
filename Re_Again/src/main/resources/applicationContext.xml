@@ -41,8 +41,6 @@
         <property name="suffix" value=".jsp"/>
     </bean> 
     
-
-    
 <!-- 扫描实现类的包 -->
     <context:component-scan base-package="controller"></context:component-scan>
     <context:component-scan base-package="service_Impl"></context:component-scan>

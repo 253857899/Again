@@ -34,7 +34,7 @@ public class UserController {
 			if(user!=null) {
 				s.setMaxInactiveInterval(10);
 				s.setAttribute("user", user);
-				return "redirect:/Type/index.jsp";
+				return "redirect:/index.jsp";
 			}else {
 				return "redirect:/login.html";
 			}

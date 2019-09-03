@@ -16,6 +16,7 @@ width:85%;height: 500px;position: absolute;left: 15%;top:0;
 </style>
 <body>
 <a href="User/outlogin">注销</a>
+
 <script type="text/javascript">
 function ok(o){
 	if(o.contentWindow.location.href.indexOf("login")>0){
