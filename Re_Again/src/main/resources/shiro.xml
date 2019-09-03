@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- 授权 认证 -->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+   <!-- 授权 认证 -->
     <bean id="jdbcRealm"  class="controller.UserRealm"></bean>
     <!-- Shiro安全管理器 -->
     <bean id="securityManager"  class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
@@ -17,13 +16,11 @@
        
         <property name="filterChainDefinitions">
             <value>
-            	<!-- /img = anon
+             
+            	/img = anon
                 /User/login=anon
-                /*/**=authc
-                /index.jsp=authc -->
-                /inlogin=anon
-                /test/**=roles[role1]
-                /index=authc
+               /*/**=authc
+                /index.jsp=authc 
             </value>
         </property>
     </bean>

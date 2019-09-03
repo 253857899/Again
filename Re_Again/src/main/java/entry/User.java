@@ -5,6 +5,17 @@ public class User {
 	private String name;
 	private String pass;
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public User(String name, String pass) {
+		this.name = name;
+		this.pass = pass;
+	}
+
+
 	public int getId() {
 		return id;
 	}
