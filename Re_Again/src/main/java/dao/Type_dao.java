@@ -14,7 +14,7 @@ import entry.Type;
 
 @Repository
 public interface Type_dao {
-	@Select("SELECT type.*,book.name bookname FROM book INNER JOIN type on type.bookid = book.typeid ${where}" )
+	@Select("SELECT type.*,book.name bookname FROM book INNER JOIN type on type.bookid = book.typeid  ${where} " )
 	public List<Type> select(@Param(value = "where" ) String where);
 	@Delete("delete from type where id = #{id} ")
 	public void delete(int id);

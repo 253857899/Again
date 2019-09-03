@@ -17,7 +17,7 @@ public class TypeServiceImpl implements TypeService{
 			if(where==""||where==null)
 				return dao.select("");
 		else 
-			return dao.select(" where name like '%"+where+"%'");
+			return dao.select("where type.name like '%"+where+"%'");
 	}
 	public void delete(int id) {
 		dao.delete(id);

@@ -12,8 +12,7 @@ import org.springframework.stereotype.Repository;
 import entry.User;
 
 @Repository
-public interface User_dao {
-	
+public interface User_dao {	
 	@Select("SELECT * FROM  User  where name =#{name} and pass = #{pass}" )
 	public User login(User t);
 	@Select("SELECT * FROM  User  ${where}" )
