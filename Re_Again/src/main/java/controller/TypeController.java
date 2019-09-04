@@ -27,13 +27,13 @@ public class TypeController extends BasicController<Type> {
 	@Autowired
 	TypeService service;
 
-	@RequestMapping("getStates")
-	public @ResponseBody String[] getStates() {
+	@RequestMapping("getStatus")
+	public @ResponseBody String[] getStatus() {
 		return Type.status_name;
 	}
 	
-	@RequestMapping("getBooks")
-	public @ResponseBody List<Book> getBooks() {
+	@RequestMapping("getBookid")
+	public @ResponseBody List<Book> getBookid() {
 		return bservice.select();
 	}
 
