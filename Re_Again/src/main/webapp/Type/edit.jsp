@@ -1,45 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    pageEncoding="UTF-8" isELIgnored="false"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="../">
+<meta charset="UTF-8">
+<link href="layui/css/layui.css" rel="stylesheet">
+<script type="text/javascript" src="layui/layui.all.js"></script>
+<script src="js/jquery-2.2.4.min.js" ></script>
+<script type="text/javascript" src="js/my.js"></script>
+
 <title></title>
 </head>
 <body>
-<c:if test="${info==null}">
-<form action="insert" method="post">
-<input name="name" value="${info.name}">
-<select name = "status" >
-<c:forEach items="${statuses}" var="row" varStatus="v">
-<option value="${v.index+1}">${row}</option>
-</c:forEach>
-</select>
-<select name = "bookid" >
-<c:forEach items="${booklist}" var="row" varStatus="v">
-<option value="${v.index+1}">${row.name}</option>
-</c:forEach>
-</select>
-<input type="submit" value="新增确定!">
-</form>
+<style>
+.layui-input{width:200px;}
+</style>
+
+
+
+<c:if test="${param.id==null}">
+<form class="layui-form" lay-filter="myform" action="Type/insert">
 </c:if>
-<c:if test="${info!=null}">
-<form action="update" method="post">
-<input type="hidden" name="id" value="${id}">
-<input name="name" value="${info.name}">
-<select name = "status">
-<c:forEach items="${statuses}" var="row" varStatus="v">
-<option value="${v.index+1}" <c:if test="${info.status == v.index+1}">selected="selected"</c:if> >${row}</option>
-</c:forEach>
-</select>
-<select name = "bookid" >
-<c:forEach items="${booklist}" var="row" varStatus="v">
-<option value="${v.index+1}" <c:if test="${info.bookid == v.index+1}">selected="selected"</c:if>>${row.name}</option>
-</c:forEach>
-</select>
-<input type="submit" value="修改确定!">
-</form>
+<c:if test="${param.id!=null}">
+<form class="layui-form" lay-filter="myform" action="Type/update">
+<input type="hidden" name="id" >
 </c:if>
+  <div class="layui-form-item">
+    <label class="layui-form-label">名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="name"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+    </div>
+  </div>
+   <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-block">
+      <select name="status" >
+      </select>
+    </div>
+  </div>
+   <div class="layui-form-item">
+    <label class="layui-form-label">类型</label>
+    <div class="layui-input-block">
+      <select name="bookid" >
+      </select>
+    </div>
+  </div>
+  
+   <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+
+layui.use(['form',], function(){
+	  var form = layui.form;
+	  form.on('submit(demo1)', function(data){
+		 $.post($("form").attr("action"), data.field, function(json) {
+			  closeFrame();
+			  parent.fresh('demo');
+			}, "json");
+		    
+		    return false;
+		  });
+});
+var id="${param.id}";
+function init(){
+	$.post("Type/select",{id:id}, function(json) {
+		render('myform', json);
+		getarray("Type/getStatus",{},"[name=status]",json.status);
+		getlist("Type/getBookid",{},"[name=bookid]",json.bookid);
+	},"json");
+	
+}
+if(id.length>0){
+	init();
+}else{
+	getarray("Type/getStatus",{},"[name=status]",-1);
+	getlist("Type/getBookid",{},"[name=bookid]",0);
+}
+
+</script>
 </body>
 </html>
