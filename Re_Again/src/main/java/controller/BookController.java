@@ -16,7 +16,7 @@ public class BookController {
 		
 		@RequestMapping("index")
 		public String index(String name,ModelMap m) {
-			m.put("Booklist", service.select());
+			m.put("Booklist", service.getWhere(name));
 			return "Book/index";		
 		}
 		@RequestMapping("delete")
@@ -37,7 +37,7 @@ public class BookController {
 		@RequestMapping("add")
 		public String add(Integer id,ModelMap m) {
 			if(id!=null)
-			m.put("shoot", service.selectById(id));
+			m.put("shoot", service.getByid(id));
 			m.put("id",id);
 			return "Book/edit";
 		}

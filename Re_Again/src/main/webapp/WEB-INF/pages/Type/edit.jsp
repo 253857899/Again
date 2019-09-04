@@ -8,9 +8,9 @@
 <title></title>
 </head>
 <body>
-<c:if test="${param.id==null}">
+<c:if test="${info==null}">
 <form action="insert" method="post">
-<input name="name" value="${shoot.name}">
+<input name="name" value="${info.name}">
 <select name = "status" >
 <c:forEach items="${statuses}" var="row" varStatus="v">
 <option value="${v.index+1}">${row}</option>
@@ -24,18 +24,18 @@
 <input type="submit" value="新增确定!">
 </form>
 </c:if>
-<c:if test="${param.id!=null}">
+<c:if test="${info!=null}">
 <form action="update" method="post">
 <input type="hidden" name="id" value="${id}">
-<input name="name" value="${shoot.name}">
+<input name="name" value="${info.name}">
 <select name = "status">
 <c:forEach items="${statuses}" var="row" varStatus="v">
-<option value="${v.index+1}" <c:if test="${shoot.status == v.index+1}">selected="selected"</c:if> >${row}</option>
+<option value="${v.index+1}" <c:if test="${info.status == v.index+1}">selected="selected"</c:if> >${row}</option>
 </c:forEach>
 </select>
 <select name = "bookid" >
 <c:forEach items="${booklist}" var="row" varStatus="v">
-<option value="${v.index+1}" <c:if test="${shoot.bookid == v.index+1}">selected="selected"</c:if>>${row.name}</option>
+<option value="${v.index+1}" <c:if test="${info.bookid == v.index+1}">selected="selected"</c:if>>${row.name}</option>
 </c:forEach>
 </select>
 <input type="submit" value="修改确定!">

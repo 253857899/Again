@@ -21,15 +21,15 @@ function del(id){
 </script>
 
 
-<a href="add" > 新增 </a>
-
 <form action="index" method="post">
-<input name="name">
-<input type="submit" value="开始战斗!">
-</form>
+	<input name="txt">
+	<button type="submit">查询</button>
+	<button type="button" onclick="window.open('add','_self');">新增</button>
+</form> 
+
 <table>
 <tr><td>编号</td><td>名称</td><td>状态</td><td>书名</td><td>修改</td><td>删除</td></tr>
-<c:forEach items="${typelist}" var="row" varStatus="v">
+<c:forEach items="${list}" var="row" varStatus="v">
 <tr><td>${row.id}</td><td>${row.name}</td>
 <td>${row.status_name}</td>
 <td>${row.bookname}</td>

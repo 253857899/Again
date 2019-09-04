@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -9,19 +10,26 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-import entry.Book;
 import entry.Type;
 
 @Repository
 public interface Type_dao {
-	@Select("SELECT type.*,book.name bookname FROM book INNER JOIN type on type.bookid = book.typeid ${where}" )
-	public List<Type> select(@Param(value = "where" ) String where);
-	@Delete("delete from type where id = #{id} ")
-	public void delete(int id);
-	@Insert("insert into type(name,status,bookid) value(#{name},#{status},#{bookid})")
-	public void insert(Type t);
-	@Update("update type set name=#{name},status=#{status},bookid=#{bookid} where id=#{id}")
-	public void update(Type t);
-	@Select("select * from type where id = #{id}")
-	public Type selectById(int id);
+	@Select("select type.*,book.name bookname from  book inner join type on book.typeid=type.bookid   ${where} ")
+	public  List<Type> getWhere(@Param("where") String where);
+
+	@Select("select Type.* from  Type ")
+	public  List<Type> getAll();
+
+	@Select("select Type.* from Type  where id=#{id}")
+	public  Type getByid(@Param("id")Integer id);
+
+	@Delete("delete from Type where id=#{id}")
+	public int delete(@Param("id")Integer id);
+
+	 @Insert("insert into Type (name,status,bookid) values(#{name},#{status},#{bookid})")
+	 public Integer insert(Type t);
+
+	 @Update("update Type set name=#{name},status=#{status},bookid=#{bookid} where id=#{id}")
+	 public Integer update(Type t);
+
 }

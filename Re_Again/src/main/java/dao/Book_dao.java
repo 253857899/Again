@@ -2,9 +2,9 @@ package dao;
 
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -12,10 +12,11 @@ import org.springframework.stereotype.Repository;
 import entry.Book;
 import entry.Type;
 
+
 @Repository
 public interface Book_dao {
 	@Select("SELECT * FROM  book " )
-	public List<Book> select();
+	public List<Book> getAll();
 	@Delete("delete from type where id = #{id} ")
 	public void delete(int id);
 	@Insert("insert into book(name,status,typeid) value(#{name},#{status},#{typeid})")
