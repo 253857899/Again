@@ -31,6 +31,7 @@ public class UserController {
 //			}
 			
 				try {
+					SecurityUtils.getSubject().getSession().setTimeout(5000);
 					SecurityUtils.getSubject().login(new UsernamePasswordToken(u.getName(),
 					u.getPass()));
 					}catch(AccountException e) {

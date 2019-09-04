@@ -22,6 +22,7 @@ public class TypeController {
 			m.put("typelist", service.select(name));
 			return "Type/index";		
 		}
+		
 		@RequiresPermissions("delete")
 		@RequestMapping("delete")
 		public String delete(int id, ModelMap m) {

@@ -17,7 +17,6 @@ width:85%;height: 500px;position: absolute;left: 15%;top:0;
 </style>
 <body>
 <a href="User/outlogin">注销</a> <br>
-<s:hasPermission name="add"> 尊敬的VIP8,牛批666 </s:hasPermission> <br>
 <script type="text/javascript">
 function ok(o){
 	if(o.contentWindow.location.href.indexOf("login")>0){
@@ -25,8 +24,8 @@ function ok(o){
 	}
 	
 }
-
 </script>
+<s:hasPermission name="add"> 尊敬的VIP8,牛批666 </s:hasPermission> <br>
 <div class="left">
 <a href="Type/index" target="right">type</a>
 </div>
