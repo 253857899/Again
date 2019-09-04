@@ -1,24 +1,18 @@
 package controller;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+
 import java.lang.reflect.ParameterizedType;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import entry.Type;
-import service.TypeService;
-import service.BasicService;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import service_Impl.BasicServiceImpl;
+import utils.ReturnInfo;
 
 @Controller
 public class BasicController<T>  {
@@ -47,37 +41,37 @@ public class BasicController<T>  {
 	
 	
 	@RequestMapping("index")
-	public String index(ModelMap m,HttpServletRequest req) {
-		m.put("list", basicservice.getWhere(""));
-		return getTname()+"/index";
+	public @ResponseBody ReturnInfo index(String txt, Integer page, Integer limit) {
+		String where="";
+		if(txt!=null && txt!="")
+			where=" where "+getTname()+".name like '%"+txt+"%'";
+		return basicservice.select(where, page, limit);
 	}
 	
 	
 	
+	@RequestMapping("select")
+	public @ResponseBody T select(int id) {
+		return basicservice.selectByid(id);
+	}
+	
+
+
 	@RequestMapping("delete")
-	public String delete(Integer id,ModelMap m,HttpServletRequest req) {
-		basicservice.delete(id);
-		 return index( m,req);
-	}
-	
-	@RequestMapping("add")
-	public String add(ModelMap m,HttpServletRequest req) {
-		return getTname()+"/edit";
-	}
-	@RequestMapping("edit")
-	public String edit(Integer id,ModelMap m,HttpServletRequest req) {
-		m.put("info", basicservice.getByid(id));
-		return add( m,req);
+	public @ResponseBody String  delete(T b) {
+		basicservice.delete(b);
+		return "{\"status\":1}";
 	}
 	
 	@RequestMapping("insert")
-	public String insert(  T t,ModelMap m,HttpServletRequest req) {
-		basicservice.insert(t);
-			return index( m,req);
+	public @ResponseBody String  insert(T b) {
+		basicservice.insert(b);
+		return "{\"status\":1}";
 	}
+	
 	@RequestMapping("update")
-	public String update(T t,ModelMap m,HttpServletRequest req) {
-		basicservice.update(t);
-		return index( m,req);
+	public @ResponseBody String update(T b) {
+		basicservice.update(b);
+		return "{\"status\":1}";
 	}
 }

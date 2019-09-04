@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import service.BasicService;
+import utils.ReturnInfo;
 
 @Service
 public class BasicServiceImpl<T> implements BasicService<T>{
@@ -32,45 +33,39 @@ private Object execDao(String mname,Object... objs){
 	}
 	
 }
+public ReturnInfo select(String where, Integer page, Integer max) {
+	boolean canpage = page != null;
+	ReturnInfo info = new ReturnInfo();
+	info.setList((List<?>) execDao("select",where, ReturnInfo.getLimit(page, max)));
+	if (canpage)
+		info.setCount((Integer) execDao("search",where));
+	return info; 
+}
 
-@SuppressWarnings("unchecked")
-public List<T> getWhere(String where) {
-	Object o=execDao("getWhere", where);
-	if(o!=null) return (List<T>) o;
-	else return new ArrayList<T>();
+
+public Integer delete(T b) {
+	Object o=execDao("delete",b);
+	if(o!=null) return (Integer) o;
+	else return -2;
+}
+
+public Integer insert(T b) {
+	Object o=execDao("insert",b);
+	if(o!=null) return (Integer) o;
+	else return -2;
+}
+
+public Integer update(T b) {
+	Object o=execDao("update",b);
+	if(o!=null) return (Integer) o;
+	else return -2;
 }
 
 @SuppressWarnings("unchecked")
-public List<T> getAll() {
-	Object o=execDao("getAll");
-	if(o!=null) return (List<T>) o;
-	else return new ArrayList<T>();
-}
-
-@SuppressWarnings("unchecked")
-public T getByid(Integer id) {
-	Object o=execDao("getByid");
+public T selectByid(Integer id) {
+	Object o=execDao("selectById");
 	if(o!=null) return (T) o;
 	else return null;
 }
-
-public int delete(Integer id) {
-	Object o=execDao("delete",id);
-	if(o!=null) return (Integer) o;
-	else return -2;
-}
-
-public Integer insert(T t) {
-	Object o=execDao("insert",t);
-	if(o!=null) return (Integer) o;
-	else return -2;
-}
-
-public Integer update(T t) {
-	Object o=execDao("update",t);
-	if(o!=null) return (Integer) o;
-	else return -2;
-}
-
 
 }
