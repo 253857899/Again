@@ -18,7 +18,7 @@ import utils.ReturnInfo;
 public class BasicController<T>  {
 	
 	BasicServiceImpl<T> basicservice;
-	
+	 
 	@ModelAttribute
 	public void init() throws Exception{
 		Field f=this.getClass().getDeclaredField("service");
