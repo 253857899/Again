@@ -15,5 +15,5 @@ public interface BasicService<T> {
 	
 	public Integer update(T b);
 	
-	public Integer delete(T b);
+	public Integer delete(Integer b);
 }

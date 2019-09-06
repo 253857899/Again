@@ -20,12 +20,10 @@
 
 
 
-<c:if test="${param.id==null}">
-<form class="layui-form" lay-filter="myform" action="Type/insert">
-</c:if>
+<form class="layui-form" lay-filter="myform" action="Type"> 
 <c:if test="${param.id!=null}">
-<form class="layui-form" lay-filter="myform" action="Type/update">
-<input type="hidden" name="id" >
+<input type="hidden" name="id" value="${param.id }">
+<input type="hidden" name="_method" value="put">
 </c:if>
   <div class="layui-form-item">
     <label class="layui-form-label">名称</label>
@@ -56,9 +54,11 @@
 </form>
 
 <script type="text/javascript">
-
+var id="${param.id}";
 layui.use(['form',], function(){
 	  var form = layui.form;
+	 
+	  
 	  form.on('submit(demo1)', function(data){
 		 $.post($("form").attr("action"), data.field, function(json) {
 			  closeFrame();
@@ -68,9 +68,8 @@ layui.use(['form',], function(){
 		    return false;
 		  });
 });
-var id="${param.id}";
 function init(){
-	$.post("Type/select",{id:id}, function(json) {
+	$.post("Type/"+id,{_method:"get"}, function(json) {
 		render('myform', json);
 		getarray("Type/getStatus",{},"[name=status]",json.status);
 		getlist("Type/getBookid",{},"[name=bookid]",json.bookid);

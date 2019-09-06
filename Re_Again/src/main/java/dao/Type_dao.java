@@ -29,7 +29,7 @@ public interface Type_dao {
 	public Integer update(Type b);
 	
 	@Delete("delete from type  where id=#{id}")
-	public Integer delete(Type b);
+	public Integer delete(@Param("id")Integer id);
 	
 	@Select("select * from  type where id = #{id}")
 	public Type selectById(@Param(value = "id")Integer id);

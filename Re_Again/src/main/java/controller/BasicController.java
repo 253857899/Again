@@ -5,10 +5,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service_Impl.BasicServiceImpl;
@@ -40,7 +44,7 @@ public class BasicController<T>  {
 	
 	
 	
-	@RequestMapping("index")
+	@GetMapping("")
 	public @ResponseBody ReturnInfo index(String txt, Integer page, Integer limit) {
 		String where="";
 		if(txt!=null && txt!="")
@@ -50,26 +54,26 @@ public class BasicController<T>  {
 	
 	
 	
-	@RequestMapping("select")
-	public @ResponseBody T select(Integer id) {
+	@GetMapping("{id}")
+	public @ResponseBody T select(@PathVariable("id") Integer id) {
 		return basicservice.selectByid(id);
 	}
 	
 
 
-	@RequestMapping("delete")
-	public @ResponseBody String  delete(T b) {
+	@DeleteMapping("{id}")
+	public @ResponseBody String  delete(@PathVariable("id")Integer b) {
 		basicservice.delete(b);
 		return "{\"status\":1}";
 	}
 	
-	@RequestMapping("insert")
+	@PostMapping("")
 	public @ResponseBody String  insert(T b) {
 		basicservice.insert(b);
 		return "{\"status\":1}";
 	}
 	
-	@RequestMapping("update")
+	@PutMapping("")
 	public @ResponseBody String update(T b) {
 		basicservice.update(b);
 		return "{\"status\":1}";

@@ -43,7 +43,7 @@ public ReturnInfo select(String where, Integer page, Integer max) {
 }
 
 
-public Integer delete(T b) {
+public Integer delete(Integer b) {
 	Object o=execDao("delete",b);
 	if(o!=null) return (Integer) o;
 	else return -2;

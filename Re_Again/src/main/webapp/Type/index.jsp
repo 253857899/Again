@@ -48,8 +48,11 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'Type/index' //数据接口
+				url : 'Type' //数据接口
 				,
+				where:{
+					_method:"get"
+				},
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
@@ -100,7 +103,7 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){
-						$.post("Type/delete", {id:data.id}, 
+						$.post("Type/"+data.id, {_method:"DELETE"}, 
 								function(json) {
 							if(json.status!=1) console.log("");
 							else{
@@ -109,7 +112,7 @@
 							layer.close(layer.index);
 								}, "json");
 					});
-				}else{
+				}else if(obj.event === 'edit'){
 					openFrame('Type/edit.jsp?id='+data.id);
 				}
 			});
@@ -118,7 +121,7 @@
 				if (obj.event === 'search') {
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
-				} else {
+				} else if(obj.event === 'add'){
 					openFrame("Type/edit.jsp");
 				}
 			});
