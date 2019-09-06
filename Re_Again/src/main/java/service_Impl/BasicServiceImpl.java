@@ -61,9 +61,8 @@ public Integer update(T b) {
 	else return -2;
 }
 
-@SuppressWarnings("unchecked")
 public T selectByid(Integer id) {
-	Object o=execDao("selectById");
+	Object o=execDao("selectById",id);
 	if(o!=null) return (T) o;
 	else return null;
 }

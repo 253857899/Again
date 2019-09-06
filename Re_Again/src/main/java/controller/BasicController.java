@@ -51,7 +51,7 @@ public class BasicController<T>  {
 	
 	
 	@RequestMapping("select")
-	public @ResponseBody T select(int id) {
+	public @ResponseBody T select(Integer id) {
 		return basicservice.selectByid(id);
 	}
 	

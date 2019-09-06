@@ -31,5 +31,6 @@ public interface Type_dao {
 	@Delete("delete from type  where id=#{id}")
 	public Integer delete(Type b);
 	
-	
+	@Select("select * from  type where id = #{id}")
+	public Type selectById(@Param(value = "id")Integer id);
 }
