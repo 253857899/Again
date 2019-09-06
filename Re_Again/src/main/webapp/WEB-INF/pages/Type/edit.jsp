@@ -13,12 +13,12 @@
 <input name="name" value="${info.name}">
 <select name = "status" >
 <c:forEach items="${statuses}" var="row" varStatus="v">
-<option value="${v.index+1}">${row}</option>
+<option value="${v.index}">${row}</option>
 </c:forEach>
 </select>
 <select name = "bookid" >
 <c:forEach items="${booklist}" var="row" varStatus="v">
-<option value="${v.index+1}">${row.name}</option>
+<option value="${v.index}">${row.name}</option>
 </c:forEach>
 </select>
 <input type="submit" value="新增确定!">
