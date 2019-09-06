@@ -25,7 +25,7 @@ public class Type {
 	}
 
 	public String getStatus_name() {
-		return status_name[status-1];
+		return status_name[status];
 	}
 	
 	public int getStatus() {
